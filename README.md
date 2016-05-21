@@ -4,6 +4,13 @@ This is a simple reference of how to set up [Angular 2 RC1](http://angular.io) t
 because at the moment set up is not as straightforward compared to NG1.  Unlike other examples, this only uses TypeScript on the client side.  Please note that this is likely not a recommended method for implementing in production.
 Exposing node_modules is not a good idea.  In your build process, place dependencies in a library folder and adjust SystemJS config and script imports accordingly.  
    
+#### To install and run:
+````
+   npm install
+   typings install
+   node index.js
+````
+
 ##### TypeScript Config
 Unlike the [configuration](https://www.typescriptlang.org/docs/handbook/tsconfig-json.html) used by the [NG2 QuickStart](https://github.com/angular/quickstart), make sure that the configuration is using 'system' and not 'common'.
 On the client side module code generation is using the SystemJS method.  On the server, CommonJS is being used. So if you plan to implement TypeScript on the server code, create another tsconfig.json for it.  You will need to
