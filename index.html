@@ -9,7 +9,7 @@
     <script src="node_modules/reflect-metadata/Reflect.js"></script>
 
     <script>
-        SystemJS.config({
+        System.config({
             map: {
                 "@angular": "node_modules/@angular",
                 "rxjs": "node_modules/rxjs"
@@ -64,7 +64,7 @@
                 }
             }
         });
-        SystemJS.import('./main').then(null, console.error.bind(console));
+        System.import('./main').then(null, console.error.bind(console));
     </script>
 </head>
 <body>
