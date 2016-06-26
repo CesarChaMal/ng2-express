@@ -12,17 +12,14 @@ Exposing node_modules is not a good idea.  In your build process, place dependen
 ````
 
 ##### TypeScript Config
-Unlike the [configuration](https://www.typescriptlang.org/docs/handbook/tsconfig-json.html) used by the [NG2 QuickStart](https://github.com/angular/quickstart), make sure that the configuration is using 'system' and not 'common'.
-On the client side module code generation is using the SystemJS method.  On the server, CommonJS is being used. So if you plan to implement TypeScript on the server code, create another tsconfig.json for it.  You will need to
-split out the client and server code into their own folders.
+Use either commonjs or system for the module option.
 
 tsconfig.json used for this example:
 ````
 {
   "compilerOptions": {
     "target": "es5",
-    //"module": "commonjs",
-    "module": "system",
+    "module": "commonjs",    
     "moduleResolution": "node",
     "sourceMap": true,
     "emitDecoratorMetadata": true,
@@ -39,8 +36,7 @@ tsconfig.json used for this example:
 ````
 
 ##### SystemJS Configuration
-Define the NG2 libraries.  Note that the format that specifies CommonJS were commented out. These are not needed.   In the packages list, make sure to include the path
-(that you exposed in Express) to the dependency.
+Define the NG2 libraries.  map specifies the location of the modules.  packages specify how to load each package in the modules.
 
 ````
 SystemJS.config({
@@ -49,47 +45,38 @@ SystemJS.config({
                 "rxjs": "node_modules/rxjs"
             },
             packages: {
-                '/': {
-                    format: 'register',
+                '/': {                    
                     defaultExtension: 'js'
                 },
-                'node_modules/@angular/http': {
-                    //format: 'cjs',
+                '@angular/http': {                    
                     defaultExtension: 'js',
                     main: 'http.js'
                 },
-                'node_modules/@angular/core': {
-                    //format: 'cjs',
+                '@angular/core': {                    
                     defaultExtension: 'js',
                     main: 'index.js'
                 },
-                'node_modules/@angular/router': {
-                    //format: 'cjs',
+                '@angular/router': {                 
                     defaultExtension: 'js',
                     main: 'index.js'
                 },
-                'node_modules/@angular/router-deprecated': {
-                    //format: 'cjs',
+                '@angular/router-deprecated': {                    
                     defaultExtension: 'js',
                     main: 'index.js'
                 },
-                'node_modules/@angular/platform-browser-dynamic': {
-                    //format: 'cjs',
+                '@angular/platform-browser-dynamic': {                 
                     defaultExtension: 'js',
                     main: 'index.js'
                 },
-                'node_modules/@angular/platform-browser': {
-                    //format: 'cjs',
+                '@angular/platform-browser': {                    
                     defaultExtension: 'js',
                     main: 'index.js'
                 },
-                'node_modules/@angular/compiler': {
-                    //format: 'cjs',
+                '@angular/compiler': {                    
                     defaultExtension: 'js',
                     main: 'compiler.js'
                 },
-                'node_modules/@angular/common': {
-                    //format: 'cjs',
+                '@angular/common': {                    
                     defaultExtension: 'js',
                     main: 'index.js'
                 },
